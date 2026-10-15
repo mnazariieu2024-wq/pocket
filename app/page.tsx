@@ -17,11 +17,28 @@ export default function LandingPage() {
           Pocket is a simple expense tracker for students living on a fixed monthly allowance. Log what you spend in
           seconds and see exactly how much you can still spend each day, so your money lasts until the next transfer.
         </p>
+        <ul className="hero-features" aria-label="What you get">
+          <li>
+            <span aria-hidden="true">⚡</span> 5-second expense logging
+          </li>
+          <li>
+            <span aria-hidden="true">📅</span> Daily spending limit
+          </li>
+          <li>
+            <span aria-hidden="true">📊</span> Spending by category
+          </li>
+          <li>
+            <span aria-hidden="true">💡</span> Early-warning tips
+          </li>
+          <li>
+            <span aria-hidden="true">🏖️</span> Savings goals
+          </li>
+        </ul>
         <Link href="/signup" className="btn btn-primary btn-lg">
           Sign up free
         </Link>
         <p className="small muted">
-          Already have an account? <Link href="/login">Log in</Link>
+          Free · No bank connection needed · Already have an account? <Link href="/login">Log in</Link>
         </p>
       </section>
 
