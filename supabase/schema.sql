@@ -50,3 +50,30 @@ revoke all on public.expenses from anon;
 revoke all on public.budgets  from anon;
 grant select, insert, update, delete on public.expenses to authenticated;
 grant select, insert, update on public.budgets to authenticated;
+
+-- 5. Savings goals (added in v2): e.g. "Summer trip €600".
+create table if not exists public.savings_goals (
+  id            uuid primary key default gen_random_uuid(),
+  user_id       uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  name          text not null check (char_length(trim(name)) between 1 and 80),
+  emoji         text not null default '🎯',
+  target_amount numeric(10, 2) not null check (target_amount > 0 and target_amount < 1000000),
+  saved_amount  numeric(10, 2) not null default 0 check (saved_amount >= 0 and saved_amount < 1000000),
+  target_date   date,
+  created_at    timestamptz not null default now()
+);
+
+alter table public.savings_goals enable row level security;
+
+drop policy if exists "Users read own goals"   on public.savings_goals;
+drop policy if exists "Users insert own goals" on public.savings_goals;
+drop policy if exists "Users update own goals" on public.savings_goals;
+drop policy if exists "Users delete own goals" on public.savings_goals;
+
+create policy "Users read own goals"   on public.savings_goals for select to authenticated using ((select auth.uid()) = user_id);
+create policy "Users insert own goals" on public.savings_goals for insert to authenticated with check ((select auth.uid()) = user_id);
+create policy "Users update own goals" on public.savings_goals for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+create policy "Users delete own goals" on public.savings_goals for delete to authenticated using ((select auth.uid()) = user_id);
+
+revoke all on public.savings_goals from anon;
+grant select, insert, update, delete on public.savings_goals to authenticated;

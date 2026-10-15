@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { categoryInfo } from "@/lib/categories";
+
+const SAMPLE = [
+  { description: "Groceries at Mercadona", category: "Groceries", amount: "€23.10" },
+  { description: "Metro card top-up", category: "Transport", amount: "€12.00" },
+  { description: "Dinner with flatmates", category: "Eating out", amount: "€15.50" },
+];
 
 export default function LandingPage() {
   return (
@@ -25,29 +32,54 @@ export default function LandingPage() {
           <span className="stat-sub">16 days left this month</span>
         </div>
         <ul className="expense-list">
-          <li className="expense">
-            <div className="expense-main">
-              <span className="expense-desc">Groceries at Mercadona</span>
-              <span className="expense-cat">Groceries</span>
-            </div>
-            <span className="num">€23.10</span>
-          </li>
-          <li className="expense">
-            <div className="expense-main">
-              <span className="expense-desc">Metro card top-up</span>
-              <span className="expense-cat">Transport</span>
-            </div>
-            <span className="num">€12.00</span>
-          </li>
-          <li className="expense">
-            <div className="expense-main">
-              <span className="expense-desc">Dinner with flatmates</span>
-              <span className="expense-cat">Eating out</span>
-            </div>
-            <span className="num">€15.50</span>
-          </li>
+          {SAMPLE.map((s) => {
+            const cat = categoryInfo(s.category);
+            return (
+              <li key={s.description} className="expense">
+                <span className="cat-badge" style={{ "--chip": cat.color } as React.CSSProperties} aria-hidden="true">
+                  {cat.emoji}
+                </span>
+                <div className="expense-main">
+                  <span className="expense-desc">{s.description}</span>
+                  <span className="expense-cat">{s.category}</span>
+                </div>
+                <span className="num">{s.amount}</span>
+              </li>
+            );
+          })}
         </ul>
       </section>
+
+      <ul className="features" aria-label="Features">
+        <li className="feature">
+          <span className="feature-icon" aria-hidden="true">⚡</span>
+          <div>
+            <strong>Add an expense in 5 seconds</strong>
+            <span>Type what you bought, tap a category, done.</span>
+          </div>
+        </li>
+        <li className="feature">
+          <span className="feature-icon" aria-hidden="true">📊</span>
+          <div>
+            <strong>See where your money goes</strong>
+            <span>A clear chart by category, month by month.</span>
+          </div>
+        </li>
+        <li className="feature">
+          <span className="feature-icon" aria-hidden="true">💡</span>
+          <div>
+            <strong>Tips that warn you early</strong>
+            <span>&quot;At this pace your budget runs out on the 24th.&quot;</span>
+          </div>
+        </li>
+        <li className="feature">
+          <span className="feature-icon" aria-hidden="true">🏖️</span>
+          <div>
+            <strong>Save for what matters</strong>
+            <span>Set a goal like a summer trip and track it weekly.</span>
+          </div>
+        </li>
+      </ul>
 
       <section className="steps" aria-labelledby="how-title">
         <h2 id="how-title" className="h2 center">
@@ -59,7 +91,7 @@ export default function LandingPage() {
             <span>What you have for the month: allowance, part-time job, scholarship.</span>
           </li>
           <li>
-            <strong>Add each expense in 5 seconds</strong>
+            <strong>Add each expense as you go</strong>
             <span>Just type what you bought. Amount and category are optional.</span>
           </li>
           <li>
