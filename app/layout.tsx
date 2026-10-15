@@ -3,9 +3,9 @@ import Header from "@/components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pocket — the expense tracker for students living away from home",
+  title: "Pocket — make your monthly allowance last",
   description:
-    "Log every expense in seconds, set a monthly budget and see exactly how much you can still spend today.",
+    "For students on a tight monthly allowance: log every expense in seconds and see exactly how much you can still spend today.",
 };
 
 export const viewport: Viewport = {

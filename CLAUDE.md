@@ -25,7 +25,7 @@ An automated bot grades this app on its public Vercel URL, acting like a strange
 - Keep keys in `.env.local` (listed in `.gitignore`) and in Vercel environment variables.
 
 ## Project notes
-- App: **Pocket** — "Pocket helps students living away from home for the first time log every expense in seconds so they know exactly how much they can still spend each day."
+- App: **Pocket** — "Pocket helps students on a tight monthly allowance see what they can spend each day, so money lasts all month."
 - Main feature on `/app`: add an expense (description = `core-input`; amount defaults to 0, category defaults to "Other", date defaults to today).
 - Data: private — each user only sees their own expenses and budget.
 - Stack: Next.js 15 (App Router) + `@supabase/ssr`. Database schema lives in `supabase/schema.sql`.

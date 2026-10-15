@@ -43,7 +43,7 @@ export default function MonthOverview({ month, onMonthChange, expenses, budget, 
     e.preventDefault();
     const value = parseAmount(draft);
     if (value === null) {
-      setError("The budget must be a positive number, like 800.");
+      setError("The allowance must be a positive number, like 800.");
       return;
     }
     const err = await onSaveBudget(value);
@@ -89,7 +89,7 @@ export default function MonthOverview({ month, onMonthChange, expenses, budget, 
                 ? left > 0
                   ? `${daysLeft} day${daysLeft === 1 ? "" : "s"} left this month`
                   : "You've used your whole budget this month"
-                : "Set a monthly budget to see this"}
+                : "Enter your monthly allowance to see this"}
             </span>
           </div>
         ) : expenses.length === 0 ? (
@@ -145,7 +145,7 @@ export default function MonthOverview({ month, onMonthChange, expenses, budget, 
         {editing ? (
           <form onSubmit={save} className="budget-form">
             <div className="field grow">
-              <label htmlFor="budget">Monthly budget (€)</label>
+              <label htmlFor="budget">Monthly allowance (€)</label>
               <input
                 id="budget"
                 type="text"
@@ -172,7 +172,7 @@ export default function MonthOverview({ month, onMonthChange, expenses, budget, 
               setEditing(true);
             }}
           >
-            {budget > 0 ? "Edit monthly budget" : "Set a monthly budget"}
+            {budget > 0 ? "Edit monthly allowance" : "Enter your monthly allowance"}
           </button>
         )}
         {error && (

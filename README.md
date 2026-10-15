@@ -1,6 +1,6 @@
 # Pocket
 
-**Pocket helps students living away from home for the first time log every expense in seconds so they know exactly how much they can still spend each day.**
+**Pocket helps students on a tight monthly allowance see what they can spend each day, so money lasts all month.**
 
 Built for the EdTech Challenge with Next.js, Supabase (Auth + Postgres with Row Level Security) and Vercel.
 

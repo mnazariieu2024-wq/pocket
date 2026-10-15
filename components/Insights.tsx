@@ -97,7 +97,7 @@ export function buildTips(expenses: Expense[], budget: number): Tip[] {
   }
 
   if (budget <= 0 && thisMonth.length > 0) {
-    tips.push({ icon: "🎯", tone: "info", text: "Set a monthly budget to see how much you can spend each day." });
+    tips.push({ icon: "🎯", tone: "info", text: "Enter your monthly allowance to see how much you can spend each day." });
   }
 
   return tips.slice(0, 3);

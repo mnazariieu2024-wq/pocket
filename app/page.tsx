@@ -11,11 +11,11 @@ export default function LandingPage() {
   return (
     <div className="container landing">
       <section className="hero">
-        <p className="eyebrow">For students living away from home</p>
+        <p className="eyebrow">For students on a tight monthly allowance</p>
         <h1 className="hero-title">Know exactly how much you can spend today.</h1>
         <p className="hero-sub">
-          Pocket is a simple expense tracker for students who just moved out. Log what you spend in seconds, set a
-          monthly budget, and see your daily allowance so you never run out of money before the month ends.
+          Pocket is a simple expense tracker for students living on a fixed monthly allowance. Log what you spend in
+          seconds and see exactly how much you can still spend each day, so your money lasts until the next transfer.
         </p>
         <Link href="/signup" className="btn btn-primary btn-lg">
           Sign up free
@@ -87,16 +87,16 @@ export default function LandingPage() {
         </h2>
         <ol className="step-list">
           <li>
-            <strong>Set your monthly budget</strong>
-            <span>What you have for the month: allowance, part-time job, scholarship.</span>
+            <strong>Enter your monthly allowance</strong>
+            <span>What you get each month from parents, a scholarship or a part-time job.</span>
           </li>
           <li>
             <strong>Add each expense as you go</strong>
             <span>Just type what you bought. Amount and category are optional.</span>
           </li>
           <li>
-            <strong>Check your daily allowance</strong>
-            <span>Pocket tells you how much you can still spend each day this month.</span>
+            <strong>Check what you can spend today</strong>
+            <span>Pocket splits what's left over the remaining days, so you never run out before the month ends.</span>
           </li>
         </ol>
         <p className="small muted center">Your data is private: only you can see your expenses.</p>
